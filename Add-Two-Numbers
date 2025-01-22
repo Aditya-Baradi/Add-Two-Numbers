@@ -1,0 +1,42 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ turn numbers into a string add to the string than switch them back to integer after that 
+ add them together and turn back into a string to split using modular division than put each number into a node.
+ */
+import java.math.BigInteger;
+class Solution {
+    
+    public String recursiveNum(ListNode num){
+        if (num == null) {
+            return ""; 
+        }
+        return recursiveNum(num.next) + num.val; 
+    }
+    public ListNode buildList(String str){
+        ListNode dummyHead = new ListNode(0); 
+        ListNode current = dummyHead;
+
+        for (int i = str.length() - 1; i >= 0; --i) { 
+            int digit = str.charAt(i) - '0'; 
+            current.next = new ListNode(digit); 
+            current = current.next;
+        }
+        return dummyHead.next;
+    }
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        String tempStr1= recursiveNum(l1);
+        String tempStr2= recursiveNum(l2);
+        BigInteger val1= new BigInteger(tempStr1);
+        BigInteger val2 = new BigInteger(tempStr2);
+        BigInteger sum= val1.add(val2);
+        return buildList(sum.toString());
+        
+    }
+}
