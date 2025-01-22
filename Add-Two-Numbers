@@ -7,8 +7,7 @@
  *     ListNode(int val) { this.val = val; }
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
- turn numbers into a string add to the string than switch them back to integer after that 
- add them together and turn back into a string to split using modular division than put each number into a node.
+First attempt is a bit slow with time and space complexity at O(N) 
  */
 import java.math.BigInteger;
 class Solution {
